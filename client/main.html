@@ -4,15 +4,17 @@
 
 <body>
    <h1>Welcome to my Resolution List!</h1>
-
-   {{> resolution}}
-
+   <ul>
+      {{#each resolutions}}
+         {{> resolution}}
+      {{/each}}
+   </ul>
 </body>
 
+
+
+
 <template name="resolution">
-   <ul>
-      <li>RL1</li>
-      <li>RL2</li>
-   </ul>
+      <li>{{title}}</li>
 </template>
 
