@@ -1,29 +1,33 @@
 <head>
-   <title>My Resolutions</title>
+   	<title>My Resolutions</title>
 </head>
 
 <body>
-   <h1>Welcome to my Resolution List!</h1>
-   <div class="container">
-      <header>
-         <h2>Monthly Resolutions</h2>
-         <form class="new-resolution">
-            <input type="text" name="title" placeholder="A new resolution">
-            <input type="submit" value="Submit">
-         </form>
-      </header>
-   </div>
-   <ul>
-      {{#each resolutions}}
-         {{> resolution}}
-      {{/each}}
-   </ul>
+   	<h1>Welcome to my Resolution List!</h1>
+   	<div class="container">
+      	<header>
+         	<h2>Monthly Resolutions</h2>
+         	<form class="new-resolution">
+            	<input type="text" name="title" placeholder="A new resolution">
+            	<input type="submit" value="Submit">
+         	</form>
+      	</header>
+   	</div>
+   	<ul>
+      	{{#each resolutions}}
+         	{{> resolution}}
+      	{{/each}}
+   	</ul>
 </body>
 
 
 
 
 <template name="resolution">
-      <li>{{title}}</li>
+    <li>
+    <input type="checkbox" name="" checked="{{checked}}" class="toggle-ckecked">
+    	<span class="text">{{title}}</span> 
+    	<button class="delete">Remove</button>
+    </li>
 </template>
 

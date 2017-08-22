@@ -26,3 +26,12 @@ Template.body.events({
 		return false;
 	}
 });
+//event listener
+Template.resolution.events({
+	'click .delete': function(){
+		Resolutions.remove(this._id);
+	},
+	'click .toggle-ckecked': function(){
+		Resolutions.update(this._id,{$set:{checked:!this.checked}});
+	},
+});
