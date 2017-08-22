@@ -1,15 +1,13 @@
+import { Template } from 'meteor/templating';
+import { ReactiveVar } from 'meteor/reactive-var';
+
+import './main.html';
+
 Resolutions = new Mongo.Collection('resolutions');
 
-if(Meteor.isClient){
-	Template.body.helpers({
-		resolutions: function(){
-			return Resolutions.find();
-		}
-	});
-}
 
-if(Meteor.isServer){
-	Meteor.startup(function(){
-		//code to run at server startup
-	});
-}
+Template.body.helpers({
+	resolutions: function(){
+		return Resolutions.find();
+	}
+});
