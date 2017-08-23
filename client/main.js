@@ -28,12 +28,12 @@ Template.body.helpers({
 Template.body.events({
 	'submit .new-resolution': function(event){
 		var title	=	event.target.title.value; //getter
-		//save to collection
-		Resolutions.insert({
-			title: title,
-			createdAt: new Date()
-		});
-
+		if(title.replace(/ /g,'') !== ''){
+			Meteor.call('addResolution',title);
+		}
+		else{
+			alert('Please input your resolution.');
+		}
 		event.target.title.value = "";
 		return false;
 	},
@@ -46,19 +46,21 @@ Template.body.events({
 			Session.set('hideFinished', '');// run meteor add session to command line to use Session
 			Session.set('enemy', '');
 		}
-
 	}
 });
 //event listener
 Template.resolution.events({
-	'click .delete': function(){
-		Resolutions.remove(this._id);
-	},
+
 	'click .toggle-ckecked': function(){
-		Resolutions.update(this._id,{$set:{checked:!this.checked}});
+		Meteor.call('updateResolution',this._id,!this.checked);
+	},
+
+	'click .delete': function(){
+		Meteor.call('deleteResolution',this._id);
 	},
 });
 
 Accounts.ui.config({
 	passwordSignupFields:'USERNAME_ONLY'
 });
+
