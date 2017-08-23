@@ -13,10 +13,12 @@
          		Hide Finished Resolutions
          	</label>
 
+         	{{#if currentUser}}
          	<form class="new-resolution">
             	<input type="text" name="title" placeholder="A new resolution">
             	<input type="submit" value="Submit">
          	</form>
+         	{{/if}}
       	</header>
    	</div>
    	<ul>
@@ -24,6 +26,7 @@
          	{{> resolution}}
       	{{/each}}
    	</ul>
+    {{>loginButtons}}
 </body>
 
 

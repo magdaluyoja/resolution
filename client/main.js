@@ -7,8 +7,6 @@ import './main.html';
 //Create new Collection as database
 Resolutions = new Mongo.Collection('resolutions');
 
-alert(Session.get('hideFinished'));
-alert(Session.get('enemy'));
 
 //helpers
 Template.body.helpers({
@@ -48,8 +46,7 @@ Template.body.events({
 			Session.set('hideFinished', '');// run meteor add session to command line to use Session
 			Session.set('enemy', '');
 		}
-		alert(Session.get('hideFinished'));
-		alert(Session.get('enemy'));
+
 	}
 });
 //event listener
@@ -60,4 +57,8 @@ Template.resolution.events({
 	'click .toggle-ckecked': function(){
 		Resolutions.update(this._id,{$set:{checked:!this.checked}});
 	},
+});
+
+Accounts.ui.config({
+	passwordSignupFields:'USERNAME_ONLY'
 });
