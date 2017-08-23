@@ -22,3 +22,6 @@ Meteor.methods({
 		Resolutions.remove(id);
 	}
 });
+Meteor.publish('resolutions', function(){
+	return Resolutions.find();
+});

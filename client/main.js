@@ -7,6 +7,8 @@ import './main.html';
 //Create new Collection as database
 Resolutions = new Mongo.Collection('resolutions');
 
+//Subscribing
+Meteor.subscribe('resolutions');
 
 //helpers
 Template.body.helpers({
