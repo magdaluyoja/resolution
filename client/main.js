@@ -1,11 +1,16 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { Session } from 'meteor/session';
 
 import './main.html';
 
+//Create new Collection as database
 Resolutions = new Mongo.Collection('resolutions');
 
+alert(Session.get('hideFinished'));
+alert(Session.get('enemy'));
 
+//helpers
 Template.body.helpers({
 	resolutions: function(){
 		if(Session.get('hideFinished')){
@@ -15,6 +20,7 @@ Template.body.helpers({
 			return Resolutions.find();
 		}
 	},
+	//Creating another helper for another class and not just for templates
 	hideFinished:function(){
 		return Session.get('hideFinished');
 	}
@@ -34,7 +40,16 @@ Template.body.events({
 		return false;
 	},
 	'change .hide-finished':function(event){
-		Session.set('hideFinished', event.target.checked);// run meteor add session to command line to use Session
+		if(event.target.checked){
+			Session.set('hideFinished', 'checked');// run meteor add session to command line to use Session
+			Session.set('enemy', 'Eastasia');
+		}
+		else{
+			Session.set('hideFinished', '');// run meteor add session to command line to use Session
+			Session.set('enemy', '');
+		}
+		alert(Session.get('hideFinished'));
+		alert(Session.get('enemy'));
 	}
 });
 //event listener
